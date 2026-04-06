@@ -71,7 +71,7 @@ const Dashboard = ({ globalQuery }) => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.post('http://localhost:8000/api/query', { query: currentQuery });
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/query`, { query: currentQuery });
         setDashboardConfig(res.data.dashboard);
       } catch (err) {
         console.error(err);
@@ -95,7 +95,7 @@ const Dashboard = ({ globalQuery }) => {
   };
 
   const processCsvData = async (parsedData) => {
-    const analyzeRes = await axios.post('http://localhost:8000/api/analyze', {
+    const analyzeRes = await axios.post(`${import.meta.env.VITE_API_URL}/api/analyze`, {
       dataset: parsedData,
       type: 'csv'
     });
@@ -176,7 +176,7 @@ const Dashboard = ({ globalQuery }) => {
     formData.append("file", file);
 
     try {
-      const uploadRes = await axios.post('http://localhost:8000/api/upload-csv', formData, {
+      const uploadRes = await axios.post(`${import.meta.env.VITE_API_URL}/api/upload-csv`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       const parsedData = uploadRes.data.data;
@@ -200,7 +200,7 @@ const Dashboard = ({ globalQuery }) => {
     setPromptInput("");
 
     try {
-      const uploadRes = await axios.post('http://localhost:8000/api/upload-drive-link', { url: driveLinkInput.trim() });
+      const uploadRes = await axios.post(`${import.meta.env.VITE_API_URL}/api/upload-drive-link`, { url: driveLinkInput.trim() });
       const parsedData = uploadRes.data.data;
       setDatasetCache(parsedData);
       await processCsvData(parsedData);
@@ -222,7 +222,7 @@ const Dashboard = ({ globalQuery }) => {
     setIsChatLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8000/api/chat', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/chat`, {
         message: userMsg,
         context: { dataset: datasetCache, dashboardSummary: dashboardConfig?.insights_summary }
       });

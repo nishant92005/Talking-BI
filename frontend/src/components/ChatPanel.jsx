@@ -71,7 +71,7 @@ const ChatPanel = () => {
 
     try {
       // Assuming FastAPI is running on localhost:8000
-      const res = await axios.post('http://localhost:8000/api/chat', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/chat`, {
         message: userMsg,
         context: { view: 'dashboard' }
       });
