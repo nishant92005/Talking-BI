@@ -1,5 +1,6 @@
 fastapi==0.111.0
 uvicorn[standard]==0.29.0
+gunicorn==21.2.0
 pandas==2.1.4
 groq==0.8.0
 alpha_vantage==2.3.1
