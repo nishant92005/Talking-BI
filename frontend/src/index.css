@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, [data-theme="cyberpunk"] {
+    --c-darkBg: 15  23  42;
+    --c-darkerBg: 2  6  23;
+    --c-cardBg: 30  41  59;
+    --c-neonBlue: 56  189  248;
+    --c-neonPurple: 168  85  247;
+    --c-neonPink: 236  72  153;
+    --c-slate-100: 241  245  249;
+    --c-slate-200: 226  232  240;
+    --c-slate-300: 203  213  225;
+    --c-slate-400: 148  163  184;
+    --c-slate-500: 100  116  139;
+    --c-slate-600: 71  85  105;
+    --c-slate-700: 51  65  85;
+    --c-slate-800: 30  41  59;
+    --c-slate-900: 15  23  42;
+    --c-slate-950: 2  6  23;
+  }
+
+  [data-theme="white"] {
+    --c-darkBg: 241  245  249;
+    --c-darkerBg: 255  255  255;
+    --c-cardBg: 255  255  255;
+    --c-neonBlue: 2  132  199  ;/* darker blue for visibility */
+    --c-neonPurple: 126  34  206;
+    --c-neonPink: 190  24  93;
+    --c-slate-100: 15  23  42;
+    --c-slate-200: 30  41  59;
+    --c-slate-300: 51  65  85;
+    --c-slate-400: 71  85  105;
+    --c-slate-500: 100  116  139;
+    --c-slate-600: 148  163  184;
+    --c-slate-700: 203  213  225;
+    --c-slate-800: 241  245  249;
+    --c-slate-900: 248  250  252;
+    --c-slate-950: 255  255  255;
+  }
+
+  [data-theme="green"] {
+    --c-darkBg: 6  78  59;
+    --c-darkerBg: 2  44  34;
+    --c-cardBg: 6  78  59;
+    --c-neonBlue: 52  211  153 ;/* Emerald */
+    --c-neonPurple: 163  230  53 ;/* Lime */
+    --c-neonPink: 16  185  129 ;/* Teal */
+    --c-slate-100: 236  253  245;
+    --c-slate-200: 209  250  229;
+    --c-slate-300: 167  243  208;
+    --c-slate-400: 110  231  183;
+    --c-slate-500: 52  211  153;
+    --c-slate-600: 16  185  129;
+    --c-slate-700: 5  150  105;
+    --c-slate-800: 4  120  87;
+    --c-slate-900: 6  78  59;
+    --c-slate-950: 2  44  34;
+  }
+
+  [data-theme="hot-pink"] {
+    --c-darkBg: 76  29  149;
+    --c-darkerBg: 46  16  101;
+    --c-cardBg: 76  29  149;
+    --c-neonBlue: 244  114  182;
+    --c-neonPurple: 217  70  239;
+    --c-neonPink: 251  207  232;
+    --c-slate-100: 250  232  255;
+    --c-slate-200: 245  208  254;
+    --c-slate-300: 240  171  252;
+    --c-slate-400: 232  121  249;
+    --c-slate-500: 217  70  239;
+    --c-slate-600: 192  38  211;
+    --c-slate-700: 162  28  175;
+    --c-slate-800: 134  25  143;
+    --c-slate-900: 112  26  117;
+    --c-slate-950: 74  4  78;
+  }
+
+  [data-theme="stylish"] {
+    --c-darkBg: 24  24  27;
+    --c-darkerBg: 9  9  11;
+    --c-cardBg: 39  39  42;
+    --c-neonBlue: 251  191  36 ;/* Amber/Gold */
+    --c-neonPurple: 234  179  8;
+    --c-neonPink: 252  211  77;
+    --c-slate-100: 244  244  245;
+    --c-slate-200: 228  228  231;
+    --c-slate-300: 212  212  216;
+    --c-slate-400: 161  161  170;
+    --c-slate-500: 113  113  122;
+    --c-slate-600: 82  82  91;
+    --c-slate-700: 63  63  70;
+    --c-slate-800: 39  39  42;
+    --c-slate-900: 24  24  27;
+    --c-slate-950: 9  9  11;
+  }
+
+  body {
+    @apply bg-darkerBg text-slate-200 antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-cardBg/60 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-xl transition-all duration-300;
+  }
+  
+  .glass-header {
+    @apply bg-darkerBg/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px theme('colors.neonBlue'), 0 0 20px theme('colors.neonPurple');
+  }
+
+  /* Custom scrollbar for webkit */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-darkerBg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
+  }
+}
